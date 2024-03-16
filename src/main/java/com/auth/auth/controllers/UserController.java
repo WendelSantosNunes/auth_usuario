@@ -1,7 +1,7 @@
 package com.auth.auth.controllers;
 
 import com.auth.auth.domain.user.User;
-import com.auth.auth.domain.user.UserRepository;
+import com.auth.auth.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
