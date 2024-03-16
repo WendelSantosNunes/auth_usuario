@@ -22,7 +22,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity postUser(@RequestBody User obj){
-        repository.save(obj);
+        this.repository.save(obj);
         return ResponseEntity.ok().build();
     }
 }
