@@ -19,7 +19,7 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private String name;
     private String email;
     private String phone;
@@ -37,7 +37,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.name;
+        return this.email;
     }
 
     @Override
