@@ -1,8 +1,10 @@
 package com.auth.auth.controllers;
 
 import com.auth.auth.domain.user.AuthenticationDTO;
+import com.auth.auth.domain.user.LoginResponseDTO;
 import com.auth.auth.domain.user.RegisterDTO;
 import com.auth.auth.domain.user.User;
+import com.auth.auth.infra.security.TokenService;
 import com.auth.auth.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,27 +13,29 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(value = "/auth")
 public class UserAuthenticationController {
 
     @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
     private UserRepository repository;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private TokenService tokenService;
 
     @PostMapping("/login")
     public ResponseEntity postUser(@RequestBody AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         System.out.println(usernamePassword);
-
         var auth = this.authenticationManager.authenticate(usernamePassword);
+        System.out.println("Hello 2");
         System.out.println(auth);
+        var token = tokenService.genereteToken((User) auth.getPrincipal());
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")
