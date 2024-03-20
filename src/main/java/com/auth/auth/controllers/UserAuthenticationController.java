@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,14 +54,12 @@ public class UserAuthenticationController {
         token = token.replace("Bearer ", "");
 
         DecodedJWT jwt = JWT.decode(token);
-        String currentUsername = jwt.getSubject();
+        String currentEmail = jwt.getSubject();
         String currentUserRole = jwt.getClaim("role").asString();
 
-        if(!currentUsername.equals(data.email()) && !currentUserRole.equals("ADMIN")){
+        if(!currentEmail.equals(data.email()) && !currentUserRole.equals("ADMIN")){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
-
-        System.out.println("Passou");
 
         User userNew = this.repository.findByEmail(data.email());
 
@@ -79,6 +76,26 @@ public class UserAuthenticationController {
         userNew.setName(data.name());
 
         this.repository.save(userNew);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteUser(@PathVariable Long id, @RequestHeader("Authorization") String token){
+        token = token.replace("Bearer ", "");
+
+        DecodedJWT jwt = JWT.decode(token);
+        String currentUserRole = jwt.getClaim("role").asString();
+
+        if(!currentUserRole.equals("ADMIN")){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+
+        if (!this.repository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        this.repository.deleteById(id);
 
         return ResponseEntity.ok().build();
     }
