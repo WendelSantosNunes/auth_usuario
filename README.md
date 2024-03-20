@@ -42,7 +42,7 @@ tecnologia JPA/Hibernate
 
 --- 
 
-### 🎨 Configuração do ambiente de desenvolvimento Java
+### 🎨 Configuração do ambiente
 
 ```bash
 
