@@ -7,7 +7,7 @@
  <a href="#-sobre-o-projeto">Sobre</a> •
 <a href="#-diagrama">Diagrama</a> •
  <a href="#-funcionalidades">Funcionalidades</a> •
- <a href="#-Configuração-do-ambiente-de-desenvolvimento-Java">Configuração do ambiente</a> • 
+ <a href="#-Configuração-do-ambiente">Configuração do ambiente</a> • 
  <a href="#-como-executar">Como executar</a> • 
  <a href="#-tecnologias">Tecnologias</a> 
 </p>
