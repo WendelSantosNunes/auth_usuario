@@ -80,10 +80,33 @@ mvn --version
  
 # Instalação do Intellij Community
 
-## Para instalar o IntelliJ IDEA Community, visite o site oficial e baixe a versão que seja compatível com o seu ambiente de desenvolvimento. Siga as instruções fornecidas para instalar o IntelliJ IDEA em seu sistema.
-
+## Para instalar o IntelliJ IDEA Community, visite o site oficial e baixe a versão que seja compatível com o seu ambiente de desenvolvimento. Siga as instruções fornecidas para instalar o IntelliJ IDEA Community em seu sistema.
 
 https://www.jetbrains.com/idea/download/?section=linux
+
+# Instalação do MySQL
+
+## Siga as instruções fornecidas no artigo da Linkedin para instalar o MySQL em seu sistema.
+
+https://www.linkedin.com/pulse/instala%C3%A7%C3%A3o-e-configura%C3%A7%C3%A3o-do-mysql-linux-mint-20-ubuntu-yenny-delgado/?originalSubdomain=pt
+
+## Criação do banco de dados a partir do terminal do Linux
+
+### Para fazer login no banco de dados, use o seguinte comando:
+
+mysql -u user_name -p
+
+### Para criar um novo banco de dados chamado authuser, use o seguinte comando:
+
+CREATE DATABASE authuser;
+
+### Para selecionar o banco de dados que você acabou de criar, use o seguinte comando:
+
+USE authuser;
+
+### Para visualizar os dados da tabela user_auth, use o seguinte comando:
+
+SELECT * FROM user_auth;
 
 ```
 ---
