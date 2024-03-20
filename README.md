@@ -24,7 +24,9 @@ tecnologia JPA/Hibernate
 ---
 ### 👨‍💻 Diagrama
 
-![Pagina Principal](https://drive.google.com/uc?export=view&id=1SA1L08TiCTLJkpgqXzOZms-vYItKydVR)
+<p align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1SA1L08TiCTLJkpgqXzOZms-vYItKydVR" alt="Diagrama"/>
+</p>
 
 ---
 
