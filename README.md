@@ -22,10 +22,8 @@ se for um administrador, excluir a conta. Para atingir esse objetivo, utilizamos
 tecnologia JPA/Hibernate
 
 ---
-
 ### 👨‍💻 Diagrama
-
-![Pagina Principal](https://drive.google.com/file/d/1SA1L08TiCTLJkpgqXzOZms-vYItKydVR/view?usp=sharing)
+![Pagina Principal](https://drive.google.com/uc?export=view&id=1SA1L08TiCTLJkpgqXzOZms-vYItKydVR)
 
 ---
 
