@@ -5,6 +5,7 @@ import com.auth.auth.infra.security.TokenService;
 import com.auth.auth.repositories.UserRepository;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class UserAuthenticationController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity postUser(@RequestBody AuthenticationDTO data){
+    public ResponseEntity postUser(@RequestBody @Valid AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
@@ -37,7 +38,7 @@ public class UserAuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity postRegister(@RequestBody RegisterDTO data){
+    public ResponseEntity postRegister(@RequestBody @Valid RegisterDTO data){
         if(this.repository.findUserDetailsByEmail(data.email()) != null)
             return ResponseEntity.badRequest().build();
 
@@ -50,7 +51,7 @@ public class UserAuthenticationController {
     }
 
     @PutMapping("/update-user")
-    public ResponseEntity putUser(@RequestBody UpdateDTO data, @RequestHeader("Authorization") String token) {
+    public ResponseEntity putUser(@RequestBody @Valid UpdateDTO data, @RequestHeader("Authorization") String token) {
         token = token.replace("Bearer ", "");
 
         DecodedJWT jwt = JWT.decode(token);
